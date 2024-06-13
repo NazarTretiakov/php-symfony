@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Login{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href=""></a></li>
+                    <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <h2 style="margin-left: 690px; margin-top: 100px; font-size: 36px" class="h3 mb-3 font-weight-normal">Sign in</h2>
+    <div class="container">
+        <form method="post" class="form-group">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <label style="margin-top: 30px" for="username">Email</label>
+            <input style="margin: 0 0 40px 0;" type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+            <label for="password">Password</label>
+            <input style="margin: 0 0 70px 0;" type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <button class="btn btn-lg btn-primary form-group-button" type="submit">
+                Sign in
+            </button>
+        </form>
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}

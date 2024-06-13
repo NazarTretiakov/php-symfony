@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Delete user{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/delete-user.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">For admins</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">Profile settings</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <section class="body">
+        <h1 class="body-title">Delete user</h1>
+        <ul class="body-inf">
+            <li class="body-information-item"><span class="information-about-user">ID</span></li>
+            <li class="body-information-item"><span class="information-about-user">Name</span></li>
+            <li class="body-information-item"><span class="information-about-user">Lastname</span></li>
+            <li class="body-information-item"><span class="information-about-user">Email</span></li>
+        </ul>
+        {% for user in users %}
+            <ul class="body-information">
+                <li class="body-information-item"><span class="information-about-user">{{ user.id }}.</span></li>
+                <li class="body-information-item"><span class="information-about-user">{{ user.name }}</span></li>
+                <li class="body-information-item"><span class="information-about-user">{{ user.lastname }}</span></li>
+                <li class="body-information-item"><span class="information-about-user">{{ user.email }}</span></li>
+                <li class="body-information-item">
+                    <a style="text-decoration: none" href="{{ path('app_delete_user', {id: user.id}) }}">
+                        <button class="button-delete">
+                            <span class="text">Delete</span>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        {% endfor %}
+        <a style="text-decoration: none" href="{{ path('app_home') }}">
+            <button class="body-cart-buttons-go-back-button">
+                <span class="icon material-symbols-outlined">arrow_back</span>
+                <span class="text">Go to products</span>
+            </button>
+        </a>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}

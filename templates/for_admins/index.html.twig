@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}For admins{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/for-admins.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">Profile settings</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block flashMessages %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="notification-panel" id="notification-panel">
+                <span class="notification-panel-message">{{ message }}</span>
+                <button class="notification-panel-close-btn" onclick="document.getElementById('notification-panel').style.display = 'none';document.getElementById('overlay').style.display = 'none';">&times;</button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+    <section class="body">
+        <ul class="body-menu">
+            <li class="body-menu-users">
+                <ul class="body-menu-users-elements">
+                    <li class="body-menu-users-elements-title"><h1 style="font-size: 36px; margin: 50px 0 10px 0;">Users</h1></li>
+                    <li class="body-menu-users-elements-inscription"><span style="font-size: 16px">Links for interacting with users</span></li>
+                    <li class="body-menu-users-elements-view-all-users"><a class="link" href="{{ path('app_users_list') }}">View all users</a></li>
+                    <li class="body-menu-users-elements-delete-user"><a class="link" href="{{ path('app_delete_user') }}">Delete user</a></li>
+                </ul>
+            </li>
+            <li class="body-menu-products">
+                <ul class="body-menu-products-elements">
+                    <li class="body-menu-products-elements-title"><h1 style="font-size: 36px; margin: 50px 0 10px 0;">Products</h1></li>
+                    <li class="body-menu-products-elements-inscription"><span style="font-size: 16px">Links for interacting with products</span></li>
+                    <li class="body-menu-products-elements-add-new-product"><a class="link" href="{{ path('app_add_new_product') }}">Add new product</a></li>
+                    <li class="body-menu-products-elements-change-amount"><a class="link" href="{{ path('app_change_amount_of_product') }}">Change amount of existing product</a></li>
+                    <li class="body-menu-products-elements-delete-product"><a class="link" href="{{ path('app_delete_product') }}">Delete product</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}

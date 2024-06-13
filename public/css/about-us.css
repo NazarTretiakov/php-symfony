@@ -1,0 +1,156 @@
+.header {
+    height: 180px;
+    background-color: #0029FF;
+    margin: 0;
+}
+.header-elements {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+}
+.header-elements-logo {
+    margin: 20px 0 0 170px;
+}
+.header-elements-logo-image {
+    width: 200px;
+    transform: rotate(-4deg);
+}
+.header-elements-security {
+    margin: 70px 180px 0 0;
+}
+.header-elements-security-elements {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+.header-elements-security-elements-for-admins {
+    color: white;
+    font-size: 20px;
+}
+.header-elements-security-elements-login {
+    color: white;
+    font-size: 20px;
+}
+.header-elements-security-elements-register {
+    color: white;
+    font-size: 20px;
+}
+
+
+.change-language-container {
+    margin: 150px 350px 100px 350px;
+}
+.change-language-buttons {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+.change-language-buttons-element {
+
+}
+.change-language-buttons-element-button {
+
+}
+.change-language-buttons-element-button-eng {
+    width: 302px;
+    padding: 10px;
+    background-color: #598bf8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 24px;
+}
+.change-language-buttons-element-button-eng:hover {
+    cursor: default;
+}
+.change-language-buttons-element-button-pl {
+    width: 300px;
+    padding: 8px;
+    color: #598bf8;
+    border: 2px solid #598bf8;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.change-language-buttons-element-button-pl:hover {
+    background-color: #0056b3;
+    color: white;
+    border: 2px solid #0056b3;
+}
+.change-language-buttons-element-button-jp {
+    width: 300px;
+    padding: 8px;
+    color: #598bf8;
+    border: 2px solid #598bf8;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.change-language-buttons-element-button-jp:hover {
+    background-color: #0056b3;
+    color: white;
+    border: 2px solid #0056b3;
+}
+
+.body {
+    margin: 150px 330px 100px 330px;
+}
+.body-about-us-title {
+    font-size: 36px;
+}
+.body-about-us-paragraph {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 80px;
+}
+.body-our-mission-title {
+    font-size: 36px;
+}
+.body-our-mission-paragraph {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 80px;
+}
+.body-what-we-offer-title {
+    font-size: 36px;
+}
+.body-what-we-offer-list {
+    margin-bottom: 80px;
+}
+.body-what-we-offer-list-item {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 30px;
+}
+.body-final-paragraph {
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.footer {
+    height: 200px;
+    background-color: #0029FF;
+    display: flex;
+    align-items: flex-end;
+}
+.footer-about-us {
+    display: block;
+    margin: 0 0 90px 220px;
+    color: white;
+    font-size: 20px;
+}

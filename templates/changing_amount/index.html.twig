@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Change amount of product{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/change-amount-of-product.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">For admins</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">Profile settings</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <section class="body-cart">
+        <h1 class="body-cart-title">Change amount of existing product</h1>
+        <div class="container">
+            <p class="current-amount">Current amount of product: <span style="font-weight: bolder" id="current-amount">{{ product.amount }}</span></p>
+            <form id="update-form" class="form">
+                <input type="hidden" name="id" value="{{ product.id }}">
+                <label for="new-amount" class="form-label">Enter the new amount of product: </label>
+                <input type="number" id="new-amount" name="new-amount" class="form-input" min="0" required>
+                <button type="submit" class="button-delete">
+                        <span class="text">Change</span>
+                </button>
+            </form>
+        </div>
+        <a style="text-decoration: none" href="{{ path('app_home') }}">
+            <button class="body-cart-buttons-go-back-button">
+                <span class="icon material-symbols-outlined">arrow_back</span>
+                <span class="text">Go to products</span></button>
+        </a>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}

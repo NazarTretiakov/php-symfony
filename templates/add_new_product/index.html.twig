@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Add new product{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/add-new-product.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">{{ 'For admins' | trans}}</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">{{ 'Profile settings' | trans}}</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">{{ 'Logout' | trans}}</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">{{ 'Login' | trans}}</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">{{ 'Register' | trans}}</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <h2 style="margin-left: 690px; margin-top: 100px; font-size: 36px">Add new product</h2>
+
+    <div class="container">
+        {{ form_errors(form) }}
+
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.colorway) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.brand) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.price) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.amount) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.description) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.image) }}
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">Add</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}
+

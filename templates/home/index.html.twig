@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Basketball shoes store{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/home.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('/js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">For admins</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">Profile settings</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block flashMessages %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="notification-panel" id="notification-panel">
+                <span class="notification-panel-message">{{ message }}</span>
+                <button class="notification-panel-close-btn" onclick="document.getElementById('notification-panel').style.display = 'none';document.getElementById('overlay').style.display = 'none';">&times;</button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
+
+{% block sorting %}
+    <section class="sorting">
+        <form action="" method="get" class="sorting-form">
+            <ul class="sorting-form-elements">
+                <li class="sorting-form-elements-models">
+                    <ul class="sorting-form-elements-models-elements">
+                        <li class="sorting-form-elements-models-elements-label"><span style="font-size: 24px">Choose brand</span></li>
+                        <li class="sorting-form-elements-models-elements-dropdown">
+                            <select style="font-size: 24px; margin: 0 0 0 30px" name="brand">
+                                <option value="all">All brands</option>
+                                {% for brand in brands %}
+                                    {% if selectedBrand == brand %}
+                                        <option selected value="{{ brand }}">{{ brand }}</option>
+                                    {% else %}
+                                        <option value="{{ brand }}">{{ brand }}</option>
+                                    {% endif%}
+                                {% endfor %}
+                            </select>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sorting-form-elements-sort">
+                    <ul class="sorting-form-elements-sort-elements">
+                        <li class="sorting-form-elements-sort-elements-label"><span style="font-size:24px">Sort products by</span></li>
+                        <li  class="sorting-form-elements-sort-elements-dropdown-condition">
+                            <select style="font-size: 24px; margin: 0 0 0 30px" name="sorting">
+                                {% if selectedSortingCondition == 'name' %}
+                                    <option selected value="name">name</option>
+                                    <option value="price">price</option>
+                                {% else %}
+                                    <option selected value="price">price</option>
+                                    <option value="name">name</option>
+                                {% endif %}
+                            </select>
+                        </li>
+                        <li  class="sorting-form-elements-sort-elements-dropdown-order">
+                            <select style="font-size: 24px; margin: 0 0 0 30px" name="order">
+                                {% if selectedOrderCondition == 'ASC'%}
+                                    <option selected value="ASC">ascending</option>
+                                    <option value="DESC">descending</option>
+                                {% else %}
+                                    <option value="ASC">ascending</option>
+                                    <option selected value="DESC">descending</option>
+                                {% endif %}
+                            </select>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <input class="button-for-sorting" type="submit" value="Sort products">
+        </form>
+    </section>
+{% endblock %}
+
+{% block body %}
+    {% for product in products %}
+        <section class="body">
+            <section class="body-product">
+                <ul class="body-product-elements">
+                    <li class="body-product-elements-image"><img class="body-product-elements-image-container" src="{{ asset('/uploads/img/' ~ product.imagePath) }}" alt="The image of the product"></li>
+                    <li class="body-product-elements-information">
+                        <ul class="body-product-elements-information-elements">
+                            <li  class="body-product-elements-information-elements-title"><h1 style="margin: 0;">{{ product.name }}</h1></li>
+                            <li class="body-product-elements-information-elements-price">{{ product.price }} €</li>
+                            <li class="body-product-elements-information-elements-description">{{ product.description }}</li>
+                            <li class="body-product-elements-information-elements-buttons">
+                                <ul class="body-product-elements-information-elements-buttons-elements">
+                                    <li class="body-product-elements-information-elements-buttons-elements-see-details"><a href="{{ path('app_product_details', {id: product.id}) }}"><button class="button-see-details">See details</button></a></li>
+                                    <li class="body-product-elements-information-elements-buttons-elements-add-to-cart"><a href="{{ path('app_choose_size', {id: product.id}) }}"><button class="button-add-to-cart">Add to cart</button></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+    {% endfor %}
+{% endblock %}
+
+{% block stickyButton %}
+    <a href="{{ path('app_cart') }}">
+        <button class="sticky-button">
+            <span style="font-size: 30px; position: absolute; margin-top: -38px" class="sticky-button-number-of-items">{{ amountOfProductsInCart }}</span>
+            <span style="font-size: 36px; padding: 26px 0 0 0" class="material-symbols-outlined">shopping_cart</span>
+        </button>
+    </a>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}
+
+
+
+

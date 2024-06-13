@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Thanks for shopping{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/thanks-for-shopping.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('/js/home.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="thank-you-container">
+        <h1>Thank You for Your purchase!</h1>
+        <p>Your order has been successfully processed. We appreciate You and hope You enjoy your purchase.</p>
+        <a href="{{ path('app_home') }}"><button class="button-home">Go to products</button></a>
+    </div>
+{% endblock %}
+
+

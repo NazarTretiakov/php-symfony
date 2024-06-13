@@ -1,0 +1,206 @@
+.header {
+    height: 180px;
+    background-color: #0029FF;
+    margin: 0;
+}
+.header-elements {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+}
+.header-elements-logo {
+    margin: 20px 0 0 170px;
+}
+.header-elements-logo-image {
+    width: 200px;
+    transform: rotate(-4deg);
+}
+.header-elements-security {
+    margin: 70px 180px 0 0;
+}
+.header-elements-security-elements {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+.header-elements-security-elements-for-admins {
+    color: white;
+    font-size: 20px;
+}
+.header-elements-security-elements-login {
+    color: white;
+    font-size: 20px;
+}
+.header-elements-security-elements-register {
+    color: white;
+    font-size: 20px;
+}
+
+
+
+
+.body-cart {
+    margin: 150px 170px 100px 170px;
+}
+.body-cart-title {
+    font-size: 40px;
+    margin-left: 140px;
+}
+.body-cart-elements {
+    list-style: none;
+    margin: 100px 70px 60px -10px;
+    padding: 0 30px 50px 90px;
+    border-bottom: 2px solid #3b82f6;
+}
+.body-cart-elements-product {
+    margin: 0 0 20px 0;
+    padding: 15px 100px 15px 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.body-cart-elements-product-elements {
+    list-style: none;
+    display: flex;
+    padding: 0 0 0 0;
+}
+.body-cart-elements-product-elements-number {
+    font-size: 24px;
+    margin: 35px 70px 0 0;
+}
+.body-cart-elements-product-elements-image {
+
+}
+.body-cart-elements-product-elements-image-container {
+    width: 100px;
+    border: 1px solid black;
+}
+.body-cart-elements-product-elements-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 35px 90px 0 70px;
+    width: 300px;
+}
+.body-cart-elements-product-elements-colorway {
+    font-size: 24px;
+    margin: 35px 90px 0 0;
+    width: 200px;
+}
+.body-cart-elements-product-elements-price {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 35px 0 0 0;
+    width: 200px;
+}
+.body-cart-total-price {
+    margin: 40px 0 0 824px;
+    font-size: 24px;
+}
+.body-cart-buttons {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 60px 120px 150px 420px;
+}
+.body-cart-buttons-go-back {
+
+}
+.body-cart-buttons-buy {
+
+}
+.body-cart-buttons-go-back-button {
+    width: 300px;
+    padding: 8px;
+    color: #598bf8;
+    border: 2px solid #598bf8;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 24px;
+    margin: -198px 0 0 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.body-cart-buttons-go-back-button .icon {
+    margin-right: 10px;
+}
+
+.body-cart-buttons-go-back-button .text {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.body-cart-buttons-buy-button {
+    width: 302px;
+    padding: 10px;
+    background-color: #598bf8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 24px;
+}
+.body-cart-buttons-go-back-button:hover {
+    background-color: #0056b3;
+    color: white;
+    border: 2px solid #0056b3;
+}
+.body-cart-buttons-buy-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+.form-group {
+    margin-bottom: 40px;
+}
+.form-group label {
+    display: block;
+    font-size: 24px;
+    margin: 40px 0 0 824px;
+}
+.form-group input[type="text"] {
+    margin: 0 0 0 824px;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1.3em;
+}
+.button-delete {
+    width: 200px;
+    padding: 8px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+    margin-left: 40px;
+}
+.button-delete:hover {
+    background-color: #B0413E;
+}
+
+
+
+.footer {
+    height: 200px;
+    background-color: #0029FF;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 100px;
+}
+
+.footer-about-us {
+    display: block;
+    margin: 0 0 90px 220px;
+    color: white;
+    font-size: 20px;
+}

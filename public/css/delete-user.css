@@ -1,0 +1,131 @@
+.header {
+    height: 180px;
+    background-color: #0029FF;
+    margin: 0;
+}
+.header-elements {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+}
+.header-elements-logo {
+    margin: 20px 0 0 170px;
+}
+.header-elements-logo-image {
+    width: 200px;
+    transform: rotate(-4deg);
+}
+.header-elements-security {
+    margin: 70px 180px 0 0;
+}
+.header-elements-security-elements {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+}
+.header-elements-security-elements-for-admins {
+    color: white;
+    font-size: 20px;
+}
+.header-elements-security-elements-login {
+    color: white;
+    font-size: 20px;
+}
+.header-elements-security-elements-register {
+    color: white;
+    font-size: 20px;
+}
+
+
+.body {
+    margin: 150px 270px 150px 270px;
+}
+.body-title {
+    font-size: 36px;
+    margin: 0 0 0 150px;
+}
+.body-inf {
+    margin: 80px 0 0 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.body-information {
+    margin: 50px 0 0 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.body-information-item {
+    margin: 10px 50px 10px 50px;
+    width: 150px;
+}
+
+.information-about-user {
+    font-size: 20px;
+}
+.body-cart-buttons-go-back-button {
+    width: 300px;
+    padding: 8px;
+    color: #598bf8;
+    border: 2px solid #598bf8;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0 0 160px;
+}
+.body-cart-buttons-go-back-button .icon {
+    margin-right: 10px;
+}
+
+.body-cart-buttons-go-back-button .text {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.body-cart-buttons-go-back-button:hover {
+    background-color: #0056b3;
+    color: white;
+    border: 2px solid #0056b3;
+}
+
+.button-delete {
+    width: 200px;
+    padding: 8px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+}
+.button-delete:hover {
+    background-color: #B0413E;
+}
+
+
+.footer {
+    height: 200px;
+    background-color: #0029FF;
+    display: flex;
+    align-items: flex-end;
+}
+
+.footer-about-us {
+    display: block;
+    margin: 0 0 90px 220px;
+    color: white;
+    font-size: 20px;
+}

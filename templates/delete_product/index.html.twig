@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Delete product{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/delete-product.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">For admins</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">Profile settings</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <section class="body-cart">
+        <h1 class="body-cart-title">Delete product</h1>
+        <ul class="body-cart-elements">
+            <li class="body-cart-elements-product">
+                <ul class="body-cart-elements-product-elements">
+                    <li class="body-cart-elements-product-elements-number"><span style="font-weight: bolder">ID</span></li>
+                    <li class="body-cart-elements-product-elements-number"><span style="font-weight: bolder; font-size: 24px; ">Image</span></li>
+                    <li class="body-cart-elements-product-elements-number"><span style="font-weight: bolder; margin-left: 30px">Name</span></li>
+                    <li class="body-cart-elements-product-elements-colorway"><span style="font-weight: bolder; width: 100px; margin-left: 150px">Colorway</span></li>
+                    <li class="body-cart-elements-product-elements-price"><span style="font-weight: bolder; margin-left: 150px">Amount</span></li>
+                </ul>
+            </li>
+            {% for product in products %}
+                <li class="body-cart-elements-product">
+                    <ul class="body-cart-elements-product-elements">
+                        <li class="body-cart-elements-product-elements-number"><span>{{ product.id }}</span></li>
+                        <li class="body-cart-elements-product-elements-image"><img class="body-cart-elements-product-elements-image-container" src="{{ asset('uploads/img/' ~ product.imagePath ) }}" alt="The image of product"></li>
+                        <li class="body-cart-elements-product-elements-title"><span>{{ product.name }}</span></li>
+                        <li  class="body-cart-elements-product-elements-colorway"><span>{{ product.colorway }}</span></li>
+                        <li  class="body-cart-elements-product-elements-price"><span style="font-weight: bolder">{{ product.amount }}</span></li>
+                        <li  class="body-cart-elements-product-elements-price">
+                            <a style="text-decoration: none" href="{{ path('app_delete_product', {id: product.id}) }}">
+                                <button class="button-delete">
+                                    <span class="text">Delete product</span>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <a style="text-decoration: none" href="{{ path('app_home') }}">
+            <button class="body-cart-buttons-go-back-button">
+                <span class="icon material-symbols-outlined">arrow_back</span>
+                <span class="text">Go to products</span>
+            </button>
+        </a>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}

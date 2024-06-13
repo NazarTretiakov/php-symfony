@@ -1,0 +1,43 @@
+{% extends 'about_us/index.html.twig' %}
+
+
+{% block title %}About us{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/about-us.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="change-language-container">
+        <ul class="change-language-buttons">
+            <li class="change-language-buttons-element"><a style="text-decoration: none" href="{{ path('app_about_us', {'locale': 'en'}) }}"><button class="change-language-buttons-element-button change-language-buttons-element-button-pl">{{ 'English' | trans}}</button></a></li>
+            <li class="change-language-buttons-element"><a style="text-decoration: none" href="{{ path('app_about_us', {'locale': 'pl'}) }}"><button class="change-language-buttons-element change-language-buttons-element-button-pl">{{ 'Polish' | trans}}</button></a></li>
+            <li class="change-language-buttons-element"><button class="change-language-buttons-element change-language-buttons-element-button-eng">{{ 'Japanese' | trans}}</button></li>
+        </ul>
+    </div>
+
+    <section class="body">
+        <h1 class="body-about-us-title">{{ 'About us' | trans}}</h1>
+        <div class="body-about-us-paragraph">{{ 'About us paragraph' | trans}}</div>
+
+        <h1 class="body-our-mission-title">{{ 'Our mission' | trans}}</h1>
+        <div class="body-our-mission-paragraph">{{ 'Our mission paragraph' | trans}}</div>
+    
+        <h1 class="body-what-we-offer-title">{{ 'What we offer' | trans}}</h1>
+        <ul class="body-what-we-offer-list">
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Detailed reviews' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Detailed reviews paragraph' | trans}}</li>
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Expert advice' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Expert advice paragraph' | trans}}</li>
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Latest trends' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Latest trends paragraph' | trans}}</li>
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Community involvement' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Community involvement paragraph' | trans}}</li>
+        </ul>
+
+        <div class="body-final-paragraph">{{ 'Final paragraph' | trans }}</div>
+    </section>
+
+{% endblock %}
+

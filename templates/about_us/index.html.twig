@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}About us{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/about-us.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">{{ 'For admins' | trans}}</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">{{ 'Profile settings' | trans}}</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">{{ 'Logout' | trans}}</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">{{ 'Login' | trans}}</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">{{ 'Register' | trans}}</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <div class="change-language-container">
+        <ul class="change-language-buttons">
+            <li class="change-language-buttons-element"><button class="change-language-buttons-element-button change-language-buttons-element-button-eng">{{ 'English' | trans}}</button></li>
+            <li class="change-language-buttons-element"><button class="change-language-buttons-element change-language-buttons-element-button-pl">{{ 'Polish' | trans}}</button></li>
+            <li class="change-language-buttons-element"><button class="change-language-buttons-element change-language-buttons-element-button-jp">{{ 'Japanese' | trans}}</button></li>
+        </ul>
+    </div>
+
+    <section class="body">
+        <h1 class="body-about-us-title">{{ 'About us' | trans}}</h1>
+        <div class="body-about-us-paragraph">{{ 'About us paragraph' | trans}}</div>
+
+        <h1 class="body-our-mission-title">{{ 'Our mission' | trans}}</h1>
+        <div class="body-our-mission-paragraph">{{ 'Our mission paragraph' | trans}}</div>
+    
+        <h1 class="body-what-we-offer-title">{{ 'What we offer' | trans}}</h1>
+        <ul class="body-what-we-offer-list">
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Detailed reviews' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Detailed reviews paragraph' | trans}}</li>
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Expert advice' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Expert advice paragraph' | trans}}</li>
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Latest trends' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Latest trends paragraph' | trans}}</li>
+            <li class="body-what-we-offer-list-item"><span style="font-weight: bolder">{{ 'Community involvement' | trans}}</span><span style="font-weight: bolder">:</span> {{ 'Community involvement paragraph' | trans}}</li>
+        </ul>
+
+        <div class="body-final-paragraph">{{ 'Final paragraph' | trans }}</div>
+    </section>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <span class="footer-about-us"></span>
+    </footer>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Profile information{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/your-profile.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if isGranted %}
+                        <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">For admins</a></li>
+                    {% else%}
+                    <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href=""></a></li>
+                    {% endif %}
+                    <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <section class="body">
+        <h1 class="body-title">Settings</h1>
+        <h2 class="body-inscription">You can change your personal data</h2>
+        <div class="container">
+            <form class="body-form form-group" action="">
+                <ul class="body-form-elements">
+                    <li class="body-form-element">
+                        <label class="body-form-label" for="name">Name</label>
+                        <input class="body-form-input" type="text" name="name" value="{{ user.name }}">
+                    </li>
+                    <li class="body-form-element">
+                        <label class="body-form-label" for="lastname">Lastname</label>
+                        <input class="body-form-input" type="text" name="lastname" value="{{ user.lastname }}">
+                    </li>
+                    <li class="body-form-element">
+                        <label class="body-form-label" for="email">Email</label>
+                        <input class="body-form-input" type="text" name="email" value="{{ user.email}}" disabled>
+                    </li>
+                    <li class="body-form-element">
+                        <label class="body-form-label" for="password">New password</label>
+                        <input class="body-form-input" type="password" name="password">
+                    </li>
+                </ul>
+                <ul class="body-buttons">
+                    <li class="body-buttons-change-information"><button type="submit" class="body-buttons-change-information-button">Change information</button></li>
+                </ul>
+            </form>
+        </div>
+        <div style="margin-left: 565px">
+            <a style="text-decoration: none" href="{{ path('app_home') }}">
+                <button class="body-buttons-go-to-products-button">
+                    <span style="margin-right: 20px" class="icon material-symbols-outlined">arrow_back</span>
+                    <span class="text">Go to products</span>
+                </button>
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block stickyButton %}
+    <a href="{{ path('app_cart') }}">
+        <button class="sticky-button">
+            <span style="font-size: 30px; position: absolute; margin-top: -38px" class="sticky-button-number-of-items">10</span>
+            <span style="font-size: 36px; padding: 26px 0 0 0" class="material-symbols-outlined">shopping_cart</span>
+        </button>
+    </a>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}

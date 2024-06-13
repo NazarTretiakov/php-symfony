@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ product.name }}{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/product-details.css') }}"/>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="{{ asset('js/home.js') }}"></script>
+{% endblock %}
+
+{% block header %}
+    <header class="header">
+        <ul class="header-elements">
+            <li class="header-elements-logo"><a href="{{ path('app_home') }}"><img class="header-elements-logo-image" src="{{ source('img/Webpage_logo.png')|data_uri }}" alt="Webpage logo"></a></li>
+            <li class="header-elements-security">
+                <ul class="header-elements-security-elements">
+                    {% if app.user %}
+                        {% if isGranted %}
+                            <li class="header-elements-security-elements-for-admins"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_for_admins') }}">For admins</a></li>
+                        {% endif%}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_your_profile') }}">Profile settings</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="header-elements-security-elements-login"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_login') }}">Login</a></li>
+                        <li class="header-elements-security-elements-register"><a style="font-size: 20px; color: white; text-decoration: none;" href="{{ path('app_register') }}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <section class="product">
+        <form>
+            <ul class="product-elements">
+                <li class="product-elements-image"><img class="product-elements-image-container" src="{{ asset('/uploads/img/' ~ product.imagePath) }}" alt="The image of product"></li>
+                <li class="product-elements-information">
+                    <ul class="product-elements-information-elements">
+                        <li class="product-elements-information-elements-title"><h1 class="product-elements-information-elements-title-container">{{ product.name }}</h1></li>
+                        <li class="product-elements-information-elements-colorway"><span class="product-elements-information-elements-colorway-container">Colorway: <span style="font-weight: bolder">{{ product.colorway }}</span></span></li>
+                        <li class="product-elements-information-elements-price"><span class="product-elements-information-elements-price-container">{{ product.price }} €</span></li>
+                        <li class="product-elements-information-elements-amount"><span class="product-elements-information-elements-amount-container">Amount: <span style="font-weight: bolder">{{ product.amount }}</span></span></li>
+                        <li class="product-elements-information-elements-choose-size">
+                            <input type="hidden" name="id" value="{{ product.id }}">
+                            <label style="font-size: 20px; display: block; margin: 0 0 5px 0;" for="chosen-size">Choose size</label>
+                            <select style="font-size: 20px; margin: 0 0 70px 0; display: block; width: 120px;" name="chosen-size">
+                                <option value="35">EU 35</option>
+                                <option value="36">EU 36</option>
+                                <option value="37">EU 37</option>
+                                <option value="38">EU 38</option>
+                                <option value="39">EU 39</option>
+                                <option value="40">EU 40</option>
+                                <option value="41">EU 41</option>
+                                <option value="42">EU 42</option>
+                                <option value="43">EU 43</option>
+                                <option value="44">EU 44</option>
+                                <option value="45">EU 45</option>
+                            </select>
+                            <button class="product-elements-information-elements-button-buy">Add to cart</button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="product-description">{{ product.description }}</div>
+            <a style="text-decoration: none" href="{{ path('app_home') }}">
+                <button class="product-button-go-back">
+                    <span class="icon material-symbols-outlined">arrow_back</span>
+                    <span class="text">Go to products</span>
+                </button>
+            </a>
+        </form>
+    </section>
+{% endblock %}
+
+{% block stickyButton %}
+    <a href="{{ path('app_cart') }}">
+        <button class="sticky-button">
+            <span style="font-size: 30px; position: absolute; margin-top: -38px" class="sticky-button-number-of-items">{{ amountOfProductsInCart }}</span>
+            <span style="font-size: 36px; padding: 26px 0 0 0" class="material-symbols-outlined">shopping_cart</span>
+        </button>
+    </a>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+        <a style="text-decoration: none" href="{{ path('app_about_us') }}"><span class="footer-about-us">About us</span></a>
+    </footer>
+{% endblock %}
